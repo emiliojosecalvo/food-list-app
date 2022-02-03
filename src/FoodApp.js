@@ -8,14 +8,16 @@ import {
     Paper
 } from '@mui/material';
 
-
 function FoodApp() {
     const initialFoods = [
-        { id: 1, food: 'Bolognese', isVegan: false, isVegetarian: false },
-        { id: 2, food: 'Rissoto', isVegan: false, isVegetarian: true },
-        { id: 3, food: 'Canneloni', isVegan: true, isVegetarian: true }
+        { id: 1, name: 'Bolognese', isVegan: false, isVegetarian: false },
+        { id: 2, name: 'Rissoto', isVegan: false, isVegetarian: true },
+        { id: 3, name: 'Canneloni', isVegan: true, isVegetarian: true }
     ];
     const [food, setFood] = useState(initialFoods);
+    const addFood = newFood => {
+        setFood([...food, { id: 5, name: newFood, isVegan: false, isVegetarian: false }])
+    }
     return (
         <div>
             <Paper style={{
@@ -39,7 +41,7 @@ function FoodApp() {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <FoodList food={food} />
+                <FoodList food={food} addFood={addFood} />
             </Paper>
 
         </div>
