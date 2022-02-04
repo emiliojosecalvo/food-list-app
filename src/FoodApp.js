@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FoodList from './FoodList';
 import FoodForm from './FoodForm';
-
+import { v4 as uuidv4 } from 'uuid';
 import {
     AppBar,
     Toolbar,
@@ -13,13 +13,28 @@ import {
 
 function FoodApp() {
     const initialFoods = [
-        { id: 1, name: 'Bolognese', isAvailable: false, isVegan: false, isVegetarian: false },
-        { id: 2, name: 'Rissoto', isAvailable: true, isVegan: false, isVegetarian: true },
-        { id: 3, name: 'Canneloni', isAvailable: true, isVegan: true, isVegetarian: true }
+        { id: uuidv4(), name: 'Bolognese', isAvailable: false, isVegan: false, isVegetarian: false },
+        { id: uuidv4(), name: 'Rissoto', isAvailable: true, isVegan: false, isVegetarian: true },
+        { id: uuidv4(), name: 'Canneloni', isAvailable: true, isVegan: true, isVegetarian: true }
     ];
     const [food, setFood] = useState(initialFoods);
+    //Add new food to the menu
     const addFood = newFood => {
-        setFood([...food, { id: 5, name: newFood, isVegan: false, isVegetarian: false, isAvailable: true }])
+        setFood([...food, { id: uuidv4(), name: newFood, isVegan: false, isVegetarian: false, isAvailable: true }])
+    }
+    //Remove a food from the menu
+    const removeFood = foodId => {
+        //create new array without the food that matches the id
+        const updatedFoods = food.filter(food => food.id !== foodId);
+        //set the new array to foods
+        setFood(updatedFoods);
+    }
+    //update availability of this food on the menu
+    const toggleFood = foodId => {
+        const newFoods = food.map(f =>
+            f.id === foodId ? { ...f, isAvailable: !f.isAvailable } : f
+        );
+        setFood(newFoods);
     }
     return (
         <div>
@@ -47,7 +62,7 @@ function FoodApp() {
                 <Grid container justifyContent='center' style={{ marginTop: '1rem' }}>
                     <Grid item xs={11} md={8} lg={4}>
                         <FoodForm addFood={addFood} />
-                        <FoodList food={food} />
+                        <FoodList food={food} removeFood={removeFood} toggleFood={toggleFood} />
                     </Grid>
                 </Grid>
             </Paper>

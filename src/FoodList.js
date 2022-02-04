@@ -6,14 +6,18 @@ import {
     Divider
 } from '@mui/material';
 
-function FoodList(props) {
+function FoodList({ food, removeFood, toggleFood }) {
     return (
         <>
             <Paper>
                 <List>
-                    {props.food.map(f => {
+                    {food.map(f => {
                         return <>
-                            <Food food={f} />
+                            <Food
+                                key={f.id}
+                                food={f}
+                                removeFood={removeFood}
+                                toggleFood={toggleFood} />
                             <Divider />
                         </>
                     })}
