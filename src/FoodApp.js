@@ -13,13 +13,13 @@ import {
 
 function FoodApp() {
     const initialFoods = [
-        { id: 1, name: 'Bolognese', isVegan: false, isVegetarian: false },
-        { id: 2, name: 'Rissoto', isVegan: false, isVegetarian: true },
-        { id: 3, name: 'Canneloni', isVegan: true, isVegetarian: true }
+        { id: 1, name: 'Bolognese', isAvailable: false, isVegan: false, isVegetarian: false },
+        { id: 2, name: 'Rissoto', isAvailable: true, isVegan: false, isVegetarian: true },
+        { id: 3, name: 'Canneloni', isAvailable: true, isVegan: true, isVegetarian: true }
     ];
     const [food, setFood] = useState(initialFoods);
     const addFood = newFood => {
-        setFood([...food, { id: 5, name: newFood, isVegan: false, isVegetarian: false }])
+        setFood([...food, { id: 5, name: newFood, isVegan: false, isVegetarian: false, isAvailable: true }])
     }
     return (
         <div>
@@ -40,7 +40,7 @@ function FoodApp() {
                         >
                         </IconButton>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            Food App
+                            Food Menu
                         </Typography>
                     </Toolbar>
                 </AppBar>
