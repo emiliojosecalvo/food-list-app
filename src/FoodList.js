@@ -6,7 +6,7 @@ import {
     Divider
 } from '@mui/material';
 
-function FoodList({ food, removeFood, toggleFood }) {
+function FoodList({ food, removeFood, toggleFood, updateFood }) {
     return (
         <>
             <Paper>
@@ -17,7 +17,9 @@ function FoodList({ food, removeFood, toggleFood }) {
                                 key={f.id}
                                 food={f}
                                 removeFood={removeFood}
-                                toggleFood={toggleFood} />
+                                toggleFood={toggleFood}
+                                updateFood={updateFood}
+                            />
                             <Divider />
                         </>
                     })}

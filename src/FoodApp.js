@@ -36,6 +36,14 @@ function FoodApp() {
         );
         setFood(newFoods);
     }
+    //update an existing food
+    const updateFood = (foodId, newName) => {
+        const newFoods = food.map(f =>
+            f.id === foodId ? { ...f, name: newName } : f
+        );
+        setFood(newFoods);
+    }
+
     return (
         <div>
             <Paper style={{
@@ -62,7 +70,12 @@ function FoodApp() {
                 <Grid container justifyContent='center' style={{ marginTop: '1rem' }}>
                     <Grid item xs={11} md={8} lg={4}>
                         <FoodForm addFood={addFood} />
-                        <FoodList food={food} removeFood={removeFood} toggleFood={toggleFood} />
+                        <FoodList
+                            food={food}
+                            removeFood={removeFood}
+                            toggleFood={toggleFood}
+                            updateFood={updateFood}
+                        />
                     </Grid>
                 </Grid>
             </Paper>
