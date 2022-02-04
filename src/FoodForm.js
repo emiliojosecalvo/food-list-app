@@ -10,11 +10,17 @@ function FoodForm(props) {
         reset();
     }
     return (
-        <Paper>
+        <Paper style={{ margin: '1rem 0', padding: '0 1rem' }}>
             <form onSubmit={handleSubmit}>
-                <TextField value={value} onChange={handleChange} />
+                <TextField
+                    value={value}
+                    onChange={handleChange}
+                    fullWidth
+                    label={'Add New Food'}
+                    margin='normal'
+                />
             </form>
-        </Paper >
+        </Paper>
     )
 }
 

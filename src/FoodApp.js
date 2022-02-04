@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import FoodList from './FoodList';
+import FoodForm from './FoodForm';
+
 import {
     AppBar,
     Toolbar,
     Typography,
     IconButton,
-    Paper
+    Paper,
+    Grid
 } from '@mui/material';
 
 function FoodApp() {
@@ -41,7 +44,12 @@ function FoodApp() {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <FoodList food={food} addFood={addFood} />
+                <Grid container justifyContent='center' style={{ marginTop: '1rem' }}>
+                    <Grid item xs={11} md={8} lg={4}>
+                        <FoodForm addFood={addFood} />
+                        <FoodList food={food} />
+                    </Grid>
+                </Grid>
             </Paper>
 
         </div>
