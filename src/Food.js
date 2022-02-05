@@ -23,7 +23,7 @@ function Food({ food, toggleFood, removeFood, updateFood }) {
                 toggleIsEditing={toggleIsEditing}
             /> :
                 <>
-                    <ListItem>
+                    <ListItem style={{ height: '80px' }} >
                         <Checkbox checked={!isAvailable} onClick={() => toggleFood(id)} />
                         <ListItemText style={{ textDecoration: !isAvailable ? 'line-through' : 'none' }}>
                             {name}

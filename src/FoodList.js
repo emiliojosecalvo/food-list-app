@@ -11,16 +11,16 @@ function FoodList({ food, removeFood, toggleFood, updateFood }) {
         <>
             <Paper>
                 <List>
-                    {food.map(f => {
+                    {food.map((f, i) => {
                         return <>
                             <Food
-                                key={f.id}
                                 food={f}
                                 removeFood={removeFood}
                                 toggleFood={toggleFood}
                                 updateFood={updateFood}
+                                key={f.id}
                             />
-                            <Divider />
+                            {i < food.lenght - 1 && <Divider />}
                         </>
                     })}
 
