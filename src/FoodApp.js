@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FoodList from './FoodList';
 import FoodForm from './FoodForm';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,12 +12,19 @@ import {
 } from '@mui/material';
 
 function FoodApp() {
-    const initialFoods = [
-        { id: uuidv4(), name: 'Bolognese', isAvailable: false, isVegan: false, isVegetarian: false },
-        { id: uuidv4(), name: 'Rissoto', isAvailable: true, isVegan: false, isVegetarian: true },
-        { id: uuidv4(), name: 'Canneloni', isAvailable: true, isVegan: true, isVegetarian: true }
-    ];
+    const initialFoods = JSON.parse(window.localStorage.getItem('foods')) || [];
+    // const initialFoods = [
+    //     { id: uuidv4(), name: 'Bolognese', isAvailable: false, isVegan: false, isVegetarian: false },
+    //     { id: uuidv4(), name: 'Rissoto', isAvailable: true, isVegan: false, isVegetarian: true },
+    //     { id: uuidv4(), name: 'Canneloni', isAvailable: true, isVegan: true, isVegetarian: true }
+    // ];
     const [food, setFood] = useState(initialFoods);
+
+    useEffect(() => {
+        window.localStorage.setItem('foods', JSON.stringify(food));
+
+    }, [food]);
+
     //Add new food to the menu
     const addFood = newFood => {
         setFood([...food, { id: uuidv4(), name: newFood, isVegan: false, isVegetarian: false, isAvailable: true }])

@@ -7,8 +7,8 @@ import {
 } from '@mui/material';
 
 function FoodList({ food, removeFood, toggleFood, updateFood }) {
-    return (
-        <>
+    if (food.length)
+        return (
             <Paper>
                 <List>
                     {food.map((f, i) => {
@@ -26,8 +26,8 @@ function FoodList({ food, removeFood, toggleFood, updateFood }) {
 
                 </List>
             </Paper>
-        </>
-    )
+        );
+    return null;
 }
 
 export default FoodList;
