@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import useLocalStorageState from './hooks/useLocalStorageState';
 import FoodList from './FoodList';
 import FoodForm from './FoodForm';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,17 +14,9 @@ import {
 
 function FoodApp() {
     const initialFoods = JSON.parse(window.localStorage.getItem('foods')) || [];
-    // const initialFoods = [
-    //     { id: uuidv4(), name: 'Bolognese', isAvailable: false, isVegan: false, isVegetarian: false },
-    //     { id: uuidv4(), name: 'Rissoto', isAvailable: true, isVegan: false, isVegetarian: true },
-    //     { id: uuidv4(), name: 'Canneloni', isAvailable: true, isVegan: true, isVegetarian: true }
-    // ];
-    const [food, setFood] = useState(initialFoods);
 
-    useEffect(() => {
-        window.localStorage.setItem('foods', JSON.stringify(food));
+    const [food, setFood] = useLocalStorageState("foods", initialFoods);
 
-    }, [food]);
 
     //Add new food to the menu
     const addFood = newFood => {
