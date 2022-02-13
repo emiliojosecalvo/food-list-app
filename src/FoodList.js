@@ -23,7 +23,6 @@ function FoodList({ food, removeFood, toggleFood, updateFood }) {
                             {i < food.lenght - 1 && <Divider />}
                         </>
                     })}
-
                 </List>
             </Paper>
         );
