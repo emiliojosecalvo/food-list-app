@@ -9,9 +9,10 @@ import {
     Paper,
     Grid
 } from '@mui/material';
+import { FoodsProvider } from './contexts/FoodsContext';
 
 function FoodApp() {
-    const initialFoods = JSON.parse(window.localStorage.getItem('foods')) || [];
+    // const initialFoods = JSON.parse(window.localStorage.getItem('foods')) || [];
 
     return (
         <div>
@@ -38,13 +39,10 @@ function FoodApp() {
                 </AppBar>
                 <Grid container justifyContent='center' style={{ marginTop: '1rem' }}>
                     <Grid item xs={11} md={8} lg={4}>
-                        <FoodForm addFood={addFood} />
-                        <FoodList
-                            food={food}
-                            removeFood={removeFood}
-                            toggleFood={toggleFood}
-                            updateFood={updateFood}
-                        />
+                        <FoodsProvider>
+                            <FoodForm />
+                            <FoodList />
+                        </FoodsProvider>
                     </Grid>
                 </Grid>
             </Paper>

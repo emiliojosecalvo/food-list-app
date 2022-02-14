@@ -1,10 +1,13 @@
 import useLocalStorageState from './useLocalStorageState';
 import { v4 as uuidv4 } from 'uuid';
 
-export default initialTodos => {
+// const initialFoods = JSON.parse(window.localStorage.getItem('foods')) || [];
+
+
+export default initialFoods => {
     const [food, setFood] = useLocalStorageState("foods", initialFoods);
     return {
-        todos,
+        food,
         //Add new food to the menu
         addFood: newFood => { setFood([...food, { id: uuidv4(), name: newFood, isAvailable: true }]) },
         //Remove a food from the menu

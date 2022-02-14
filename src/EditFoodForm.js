@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TextField } from '@mui/material';
 import useInputState from './hooks/useInputState';
+import { FoodsContext } from './contexts/FoodsContext';
 
-function EditFoodForm({ updateFood, id, name, toggleIsEditing }) {
+
+function EditFoodForm({ id, name, toggleIsEditing }) {
+    const { updateFood } = useContext(FoodsContext);
     const [value, handleChange] = useInputState(name);
+
     return (
         <>
             <form

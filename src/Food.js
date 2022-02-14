@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useToggleState from './hooks/useToggleState';
 import EditFoodForm from './EditFoodForm';
 import {
@@ -9,16 +9,16 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { FoodsContext } from './contexts/FoodsContext';
 
-
-function Food({ food, toggleFood, removeFood, updateFood }) {
-    const { id, name, isAvailable } = food;
+function Food({ id, name, isAvailable }) {
+    const { toggleFood, removeFood } = useContext(FoodsContext);
     const [isEditing, toggleIsEditing] = useToggleState(false);
+
     return (
         <>
             {isEditing ? <EditFoodForm
                 id={id}
-                updateFood={updateFood}
                 name={name}
                 toggleIsEditing={toggleIsEditing}
             /> :
