@@ -13,10 +13,10 @@ function FoodList() {
         return (
             <Paper>
                 <List>
-                    {food.map((f, i) => {
+                    {food.map((food, index) => {
                         return <>
-                            <Food {...food} key={f.id} />
-                            {i < food.lenght - 1 && <Divider />}
+                            <Food {...food} key={index} />
+                            {index < food.lenght - 1 && <Divider />}
                         </>
                     })}
                 </List>

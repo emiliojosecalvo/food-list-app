@@ -12,8 +12,6 @@ import {
 import { FoodsProvider } from './contexts/FoodsContext';
 
 function FoodApp() {
-    // const initialFoods = JSON.parse(window.localStorage.getItem('foods')) || [];
-
     return (
         <div>
             <Paper style={{
