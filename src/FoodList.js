@@ -15,8 +15,8 @@ function FoodList() {
                 <List>
                     {food.map((food, index) => {
                         return <>
-                            <Food {...food} key={index} />
-                            {index < food.lenght - 1 && <Divider />}
+                            <Food {...food} key={food.id} />
+                            {index < food.lenght - 1 && <Divider key={index} />}
                         </>
                     })}
                 </List>
