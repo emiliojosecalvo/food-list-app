@@ -5,7 +5,7 @@ import { FoodsContext } from './contexts/FoodsContext';
 
 
 function EditFoodForm({ id, name, toggleIsEditing }) {
-    const { updateFood } = useContext(FoodsContext);
+    const { dispatch } = useContext(FoodsContext);
     const [value, handleChange] = useInputState(name);
 
     return (
@@ -14,7 +14,7 @@ function EditFoodForm({ id, name, toggleIsEditing }) {
                 style={{ marginLeft: '1.5rem', width: '50%' }}
                 onSubmit={(e) => {
                     e.preventDefault();
-                    updateFood(id, value);
+                    dispatch({ type: 'UPDATE-FOOD', id: id, newFood: value })
                     toggleIsEditing();
                 }}>
                 <TextField

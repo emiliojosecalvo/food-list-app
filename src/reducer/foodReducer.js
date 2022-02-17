@@ -1,19 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
 
-function foodReducer(state, action) {
+export default function foodReducer(state, action) {
     switch (action.type) {
         //ADD {type: 'ADD', newFood: 'Any Food'}
         case 'ADD-FOOD':
-            return [...state, { id: uuidv4(), name: newFood, isAvailable: true }];
+            return [...state, { id: uuidv4(), name: action.newFood, isAvailable: true }];
         //REMOVE {type: 'REMOVE, id: '12'}
         case 'REMOVE-FOOD':
-            return state.filter(food => food.id !== id);
+            return state.filter(food => food.id !== action.id);
         //TOGGLE {type: 'TOGGLE, id: '12'}
         case 'TOGGLE-FOOD':
-            return state.map(food => food.id === id ? { ...f, isAvailable: !f.isAvailable } : food);
+            return state.map(food => food.id === action.id ? { ...food, isAvailable: !food.isAvailable } : food);
         case 'UPDATE-FOOD':
             //TOGGLE {type: 'TOGGLE, id: '12', newFood: 'Pasta'}
-            return state.map(food => food.id === foodId ? { ...food, name: newFood } : food);
+            return state.map(food => food.id === action.id ? { ...food, name: action.newFood } : food);
         default:
             return state;
     }

@@ -4,11 +4,12 @@ import useInputState from './hooks/useInputState';
 import { FoodsContext } from './contexts/FoodsContext';
 
 function FoodForm() {
-    const { addFood } = useContext(FoodsContext);
+    const { dispatch } = useContext(FoodsContext);
     const [value, handleChange, reset] = useInputState('');
     const handleSubmit = e => {
         e.preventDefault();
-        addFood(value)
+        dispatch({ type: 'ADD-FOOD', newFood: value });
+        // addFood(value)
         reset();
     }
     return (
