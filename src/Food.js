@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import useToggleState from './hooks/useToggleState';
 import EditFoodForm from './EditFoodForm';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -41,4 +41,6 @@ function Food({ id, name, isAvailable }) {
     )
 }
 
-export default Food;
+export default memo(Food);
+
+//memo only checks for prop changes. if the props hasnt change the component will not be rerender
