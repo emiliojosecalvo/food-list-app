@@ -1,10 +1,10 @@
 import { Paper, TextField } from '@mui/material';
 import React, { useContext } from 'react';
 import useInputState from './hooks/useInputState';
-import { FoodsContext } from './contexts/FoodsContext';
+import { DispatchContext } from './contexts/FoodsContext';
 
 function FoodForm() {
-    const { dispatch } = useContext(FoodsContext);
+    const dispatch = useContext(DispatchContext);
     const [value, handleChange, reset] = useInputState('');
     const handleSubmit = e => {
         e.preventDefault();

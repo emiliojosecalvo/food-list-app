@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
 import useToggleState from './hooks/useToggleState';
 import EditFoodForm from './EditFoodForm';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { DispatchContext } from './contexts/FoodsContext';
 import {
     ListItem,
     ListItemText,
     Checkbox,
     IconButton
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import { FoodsContext } from './contexts/FoodsContext';
 
 function Food({ id, name, isAvailable }) {
-    const { dispatch } = useContext(FoodsContext);
+    const dispatch = useContext(DispatchContext);
     const [isEditing, toggleIsEditing] = useToggleState(false);
 
     return (

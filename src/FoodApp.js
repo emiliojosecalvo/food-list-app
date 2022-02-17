@@ -1,6 +1,7 @@
 import React from 'react';
 import FoodList from './FoodList';
 import FoodForm from './FoodForm';
+import { FoodsProvider } from './contexts/FoodsContext';
 import {
     AppBar,
     Toolbar,
@@ -9,7 +10,6 @@ import {
     Paper,
     Grid
 } from '@mui/material';
-import { FoodsProvider } from './contexts/FoodsContext';
 
 function FoodApp() {
     return (
